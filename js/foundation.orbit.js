@@ -278,6 +278,11 @@ class Orbit {
           function(){
             $newSlide.css({'position': 'relative', 'display': 'block'})
             .attr('aria-live', 'polite');
+            /**
+            * Triggers when the slide has finished animating in.
+            * @event Orbit#slidechange
+            */
+            this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
         });
 
         Foundation.Motion.animateOut(
@@ -296,12 +301,12 @@ class Orbit {
         if (this.options.autoPlay && !this.timer.isPaused) {
           this.timer.restart();
         }
+        /**
+        * Triggers when the slide has finished animating in.
+        * @event Orbit#slidechange
+        */
+        this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
       }
-    /**
-    * Triggers when the slide has finished animating in.
-    * @event Orbit#slidechange
-    */
-      this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
     }
   }
 
